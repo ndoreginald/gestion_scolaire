@@ -1,0 +1,64 @@
+﻿@model Atelier3.Models.Student
+
+@{
+    ViewData["Title"] = "Create Student";
+}
+
+<h1 class="my-4">Create New Student</h1>
+
+<div class="card">
+    <div class="card-header">
+        <h4 class="mb-0">Student Information</h4>
+    </div>
+    <div class="card-body">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group row mb-3">
+                <label asp-for="StudentName" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="StudentName" class="form-control" placeholder="Enter Student Name" />
+                    <span asp-validation-for="StudentName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                <label asp-for="Age" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="Age" class="form-control" placeholder="Enter Age" />
+                    <span asp-validation-for="Age" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                <label asp-for="BirthDate" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="BirthDate" class="form-control" placeholder="Enter Birth Date (yyyy-mm-dd)" />
+                    <span asp-validation-for="BirthDate" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                <label asp-for="SchoolID" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <select asp-for="SchoolID" class="form-control" asp-items="ViewBag.SchoolID">
+                        <option value="">Select School</option>
+                    </select>
+                    <span asp-validation-for="SchoolID" class="text-danger"></span>
+                </div>
+            </div>
+
+            <br />
+            <div class="form-group mb-3">
+                <button type="submit" class="btn btn-primary">Create</button>
+                <a asp-action="Index" class="btn btn-secondary ml-2">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,35 @@
+﻿@model Atelier3.Models.School
+
+@{
+    ViewData["Title"] = "School Details";
+}
+
+<h1 class="my-4">School Details</h1>
+
+<div class="card">
+    <div class="card-header">
+        <h4 class="mb-0">School Information</h4>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.SchoolName)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.SchoolName)
+            </dd>
+
+            <dt class="col-sm-3 font-weight-bold">
+                @Html.DisplayNameFor(model => model.SchoolAdress)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.SchoolAdress)
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div class="mt-4">
+    <a asp-action="Edit" asp-route-id="@Model?.SchoolID" class="btn btn-primary">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary ml-2">Back to List</a>
+</div>

@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Atelier3.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="my-4">Student List</h1>
+
+<div class="d-flex justify-content-between mb-3">
+    <div>
+        <a class="btn btn-primary" asp-action="Create">Create New Student</a>
+    </div>
+    <div>
+        <a class="btn btn-info" asp-action="Index" asp-controller="Student">View All Students</a>
+    </div>
+</div>
+
+<form class="form-inline mb-3" asp-action="Search" asp-controller="Student">
+    <div class="input-group">
+        <input size="30" class="form-control" placeholder="Type a Name" type="search" name="name" />
+        <select asp-items="ViewBag.SchoolID" name="schoolid" class="form-control mx-2">
+        </select>
+        <div class="input-group-append">
+            <button class="btn btn-success" type="submit">Search</button>
+        </div>
+    </div>
+</form>
+
+<table class="table table-striped table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.School)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BirthDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.School.SchoolName)
+                </td>
+                <td class="text-right">
+                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.StudentId">Edit</a>
+                    <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.StudentId">Details</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.StudentId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

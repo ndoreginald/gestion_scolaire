@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Atelier3.Models.School>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="my-4">School List</h1>
+
+<div class="d-flex justify-content-between mb-3">
+    <a class="btn btn-primary" asp-action="Create">Create New School</a>
+</div>
+
+<table class="table table-striped table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SchoolName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SchoolAdress)
+            </th>
+            <th class="text-right">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SchoolName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SchoolAdress)
+                </td>
+                <td class="text-right">
+                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.SchoolID">Edit</a>
+                    <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.SchoolID">Details</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.SchoolID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
